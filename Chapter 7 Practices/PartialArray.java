@@ -1,5 +1,3 @@
-
-
 public class PartialArray
 {
     private int[] values;
@@ -28,4 +26,58 @@ public class PartialArray
         
         currSize --;
     }
+    
+    public void insert(int pos, int newValue)
+    {
+        if(currSize == values.length)
+        {
+            this.grow();
+        }
+        
+        
+    
+        for(int i = currSize;
+            i > pos;
+            i--)
+        {
+            values[i] = values[i-1];
+        }
+            
+        values[pos] = newValue;
+        currSize++;
+    }
+    
+    
+    public void swap(int pos1, int pos2)
+    {
+        int temp = values[pos1];
+        
+        values[pos1] = values[pos2];
+        values[pos2] = temp;
+    }
+    
+    private void grow()
+    {
+        int[] newValues = new int[currSize * 2];
+        
+        for(int i = 0;
+            i < currSize;
+            i ++)
+        {
+            newValues[i] = values[i];
+        }
+        
+        values = newValues;
+    }
+    
+    public static void main(String[] args)
+    {
+        
+    }
 }
+
+
+
+
+
+
