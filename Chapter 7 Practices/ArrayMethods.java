@@ -68,6 +68,99 @@ public class ArrayMethods
          }
      }
  }
+ 
+ public void replaceWithLargestNeighbor()
+ {
+     int temp;
+     int previous = values[0];
+     for(int i = 1;
+         i < values.length - 1;
+         i ++)
+     {
+         if(previous > values[i + 1])
+         {
+             temp = previous;
+         }
+         
+         else
+         {
+            temp = values[i + 1]; 
+         }
+         
+         
+         previous = values[i];
+         
+         values[i] = temp;
+     }
+ }
+ 
+ public void removeMiddle()
+ {
+     int currentIndex = 0;
+     if(values.length % 2 == 0)
+     {
+         int[] newValues = new int[values.length - 2];
+         
+         for(int i = 0;
+             i < values.length;
+             i ++)
+         {
+             if(i != (values.length/2) || i != ((values.length/2) - 1))
+             {
+                 newValues[currentIndex] = values[i];
+                 currentIndex++;
+             }
+         }
+         values = newValues;
+     }
+     
+     else
+     {
+         int[] newValues = new int[values.length - 1];
+         
+         for(int i = 0;
+             i < values.length;
+             i ++)
+         {
+             if(i != (int)(values.length/2))
+             {
+                 newValues[currentIndex] = values[i];
+                 currentIndex++;
+             }
+         }
+         values = newValues;
+     }
+ }
+ 
+ public void evensFirst()
+ {
+     int[] newValues = new int[values.length];
+     int currentIndex = 0;
+     for(int i = 0;
+         i < values.length;
+         i ++)
+     {
+         if(values[i] % 2 == 0)
+         {
+             newValues[currentIndex] = values[i];
+             currentIndex++;
+         }
+     }
+     
+     for(int i = 0;
+         i < values.length;
+         i ++)
+     {
+       if(values[i] % 2 != 0)
+         {
+             newValues[currentIndex] = values[i];
+             currentIndex++;
+         }  
+     }
+     
+     values = newValues;
+ }
+ 
  public void printArray()
  {
      for (int value: values) {System.out.println(value);}

@@ -5,12 +5,12 @@ public class ArrayOperations
 {
     public static void main(String[] args)
     {
-        int[] values = {8, 4, 5, 21, 7, 9, 18, 2, 100};
+        double[] values = {8, 4, 5, 21, 7, 9, 18, 2, 100};
         System.out.println("There are " + values.length + " elements in the Array.");
         System.out.println("Index 0: " + values[0]);
         System.out.println("Last Index: " + values[values.length - 1]);
         
-        for(int value: values)
+        for(double value: values)
         {
             System.out.println("Value: " + value);
         }
