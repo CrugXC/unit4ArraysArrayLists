@@ -2,8 +2,8 @@
 /**
  * The model for radar scan and accumulator
  * 
- * @author @gcschmit
- * @version 19 July 2014
+ * @author Jay Rixie
+ * @version 10 December 2015
  */
 public class Radar
 {
@@ -35,11 +35,8 @@ public class Radar
     {
         // initialize the currentScan 2D array and the accumulator 2D array
         
-        
-        //
-        // !!! add code here !!!
-        //
-        
+        currentScan = new boolean[rows][cols];
+        accumulator = new int[rows][cols];
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
@@ -63,10 +60,15 @@ public class Radar
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
         
+        for (int i = 0; i < currentScan.length; i++)
+        {
+            for (int j = 0; j < currentScan[i].length; j++)
+            {
+                currentScan[i][j] = false;
+            }
+        }
         
-        //
-        // !!! add code here !!!
-        //
+        
         
         
     }
