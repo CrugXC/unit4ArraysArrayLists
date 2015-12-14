@@ -54,12 +54,8 @@ public class Radar
     public void scan()
     {
         // algorithm for performing a scan:
+
         //    1. set all cells in the currentScan 2D array to false
-        //    2. set the location of the monster in the currentScan 2D array
-        //    3. inject noise into the grid
-        //    4. update the accumulator 2D array based on the state of the currentScan 2D array
-        //    5. increment the numScans instance variable
-        
         for (int i = 0; i < currentScan.length; i++)
         {
             for (int j = 0; j < currentScan[i].length; j++)
@@ -68,9 +64,26 @@ public class Radar
             }
         }
         
+        //    2. set the location of the monster in the currentScan 2D array
+        currentScan[monsterLocationRow][monsterLocationCol] = true;
         
+        //    3. inject noise into the grid
+        this.injectNoise();
         
+        //    4. update the accumulator 2D array based on the state of the currentScan 2D array
+        for (int i = 0; i < currentScan.length; i++)
+        {
+            for (int j = 0; j < currentScan[i].length; j++)
+            {
+                if(currentScan[i][j] == true)
+                {
+                    accumulator[i][j] ++;
+                }
+            }
+        }
         
+        //    5. increment the numScans instance variable
+        numScans ++;
     }
 
     /**
@@ -169,11 +182,17 @@ public class Radar
         // as a false positive.
         
         
-        //
-        // !!! add code here !!!
-        //
-        
-        
+        for (int i = 0; i < currentScan.length; i++)
+        {
+            for (int j = 0; j < currentScan[i].length; j++)
+            {
+                //Checks if random is less than or equals to noiseFraction, if so, sets it as true
+                if (Math.random () <= noiseFraction)
+                {
+                    currentScan[i][j] = true;
+                }
+            }
+        }            
     }
     
 }
