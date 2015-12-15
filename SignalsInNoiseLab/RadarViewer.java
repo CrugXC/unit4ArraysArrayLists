@@ -1,4 +1,6 @@
 import javax.swing.JFrame;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Class that contains the main method for the program and creates the frame containing the component.
@@ -17,8 +19,43 @@ public class RadarViewer
         // create the radar, set the monster location, and perform the initial scan
         final int ROWS = 100;
         final int COLS = 100;
-        Radar radar = new Radar(ROWS, COLS);
-        radar.setNoiseFraction(0.10);
+        
+        Radar radar;
+        
+        Scanner s1 = new Scanner(System.in);
+        
+        System.out.print("Would you like to manually set Monster Location and Noise Fraction? (y/n) (*Note: input 'multiple' to create multiple monsters): ");
+        
+        String input = s1.next();
+        if(input.equals("y"))
+        {    
+            System.out.print("Monster Row: ");
+            int monsterRow = s1.nextInt();
+            
+            System.out.print("Monster Column: ");
+            int monsterCol = s1.nextInt();
+            
+            System.out.print("Noise Fraction: ");
+            double noiseFrac = s1.nextDouble();
+            
+            radar = new Radar(ROWS, COLS, monsterRow, monsterCol);
+            
+            radar.setNoiseFraction(noiseFrac);
+        }
+        
+        else if(input.equals("multiple"))
+        {
+            
+        }
+        else
+        {
+            radar = new Radar(ROWS, COLS);
+            radar.setNoiseFraction(Math.random());
+        }
+        
+        
+        
+        
         radar.scan();
         
         JFrame frame = new JFrame();

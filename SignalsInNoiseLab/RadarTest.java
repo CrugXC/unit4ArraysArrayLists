@@ -21,8 +21,6 @@ public class RadarTest
      */
     public RadarTest()
     {
-        // initialise instance variables
-        x = 0;
     }
     
     /**
@@ -44,5 +42,34 @@ public class RadarTest
     public void tearDown()
     {
     }
-
+    
+    /**
+     * Creates Monster at coordinates 50,50 and checks to see if its there
+     */
+    
+    @Test
+    public void test1()
+    {
+        Radar r1 = new Radar(100,100,50,50); 
+        
+        for(int i = 0; i < 500; i++)
+        {
+            r1.scan();
+        }
+        
+        assertEquals(500, r1.getAccumulatedDetection(50,50));
+    }
+    
+    @Test
+    public void test2()
+    {
+        Radar r1 = new Radar(100,100,75,75); 
+        
+        for(int i = 0; i < 500; i++)
+        {
+            r1.scan();
+        }
+        
+        assertEquals(500, r1.getAccumulatedDetection(75,75));
+    }
 }

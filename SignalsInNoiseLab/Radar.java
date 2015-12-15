@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * The model for radar scan and accumulator
  * 
@@ -42,6 +42,38 @@ public class Radar
         //  setMonsterLocation method for the unit test
         monsterLocationRow = (int)(Math.random() * rows);
         monsterLocationCol = (int)(Math.random() * cols);
+        
+        noiseFraction = 0.05;
+        numScans= 0;
+    }
+    
+    public Radar(int rows, int cols, int monsterLocRow, int monsterLocCol)
+    {
+        // initialize the currentScan 2D array and the accumulator 2D array
+        
+        currentScan = new boolean[rows][cols];
+        accumulator = new int[rows][cols];
+        
+        // randomly set the location of the monster (can be explicity set through the
+        //  setMonsterLocation method for the unit test
+        monsterLocationRow = monsterLocRow;
+        monsterLocationCol = monsterLocCol;
+        
+        noiseFraction = 0.05;
+        numScans= 0;
+    }
+    
+    public Radar(int rows, int cols, ArrayList<Monster> monsterList)
+    {
+        // initialize the currentScan 2D array and the accumulator 2D array
+        
+        currentScan = new boolean[rows][cols];
+        accumulator = new int[rows][cols];
+        
+        // randomly set the location of the monster (can be explicity set through the
+        //  setMonsterLocation method for the unit test
+        monsterLocationRow = monsterLocRow;
+        monsterLocationCol = monsterLocCol;
         
         noiseFraction = 0.05;
         numScans= 0;
