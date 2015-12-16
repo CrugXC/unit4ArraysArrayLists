@@ -45,7 +45,29 @@ public class RadarViewer
         
         else if(input.equals("multiple"))
         {
+            System.out.println("Continue to enter integers as the coordinates for monster. When done, enter a non-integer value for Monster Row.");
             
+            int monsterRow;
+            int monsterCol;
+            
+            ArrayList<Location> monsterList = new ArrayList<Location>(20);
+            System.out.print("Monster Row: ");
+            do
+            {
+                if(s1.hasNextInt())
+                {
+                    monsterRow = s1.nextInt(); 
+                    
+                    System.out.print("Monster Col: ");
+                    monsterCol = s1.nextInt();
+                    
+                    monsterList.add(new Location(monsterRow, monsterCol));
+                }
+                System.out.print("Monster Row: ");
+            }
+            while(s1.hasNextInt());
+            
+            radar = new Radar(ROWS, COLS, monsterList);
         }
         else
         {

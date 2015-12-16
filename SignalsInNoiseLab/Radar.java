@@ -25,6 +25,8 @@ public class Radar
     // number of scans of the radar since construction
     private int numScans;
 
+    //ArrayList of Location objects
+    ArrayList<Location> monList;
     /**
      * Constructor for objects of class Radar
      * 
@@ -42,6 +44,8 @@ public class Radar
         //  setMonsterLocation method for the unit test
         monsterLocationRow = (int)(Math.random() * rows);
         monsterLocationCol = (int)(Math.random() * cols);
+        
+
         
         noiseFraction = 0.05;
         numScans= 0;
@@ -63,7 +67,7 @@ public class Radar
         numScans= 0;
     }
     
-    public Radar(int rows, int cols, ArrayList<Monster> monsterList)
+    public Radar(int rows, int cols, ArrayList<Location> monsterList)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
         
@@ -72,8 +76,8 @@ public class Radar
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
-        monsterLocationRow = monsterLocRow;
-        monsterLocationCol = monsterLocCol;
+        
+        monList = monsterList;
         
         noiseFraction = 0.05;
         numScans= 0;
@@ -97,8 +101,18 @@ public class Radar
         }
         
         //    2. set the location of the monster in the currentScan 2D array
-        currentScan[monsterLocationRow][monsterLocationCol] = true;
+        if(monList == null)
+        {
+            currentScan[monsterLocationRow][monsterLocationCol] = true;
+        }
         
+        else
+        {
+            for(Location loc: monList)
+            {
+                currentScan[loc.getX()][loc.getY()] = true;
+            }
+        }
         //    3. inject noise into the grid
         this.injectNoise();
         

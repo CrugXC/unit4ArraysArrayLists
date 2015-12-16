@@ -6,7 +6,7 @@
  * @author Jay Rixie 
  * @version 12/15/15
  */
-public class Monster
+public class Location
 {
     /**
      * row  the row coordinate of the Monster
@@ -15,7 +15,7 @@ public class Monster
     int row;
     int col;
     
-    public Monster(int rowLoc, int colLoc)
+    public Location(int rowLoc, int colLoc)
     {
         row = rowLoc;
         col = colLoc;
@@ -25,7 +25,7 @@ public class Monster
      * getRow   returns row value
      * @row     class's row variable
      */
-    public int getRow()
+    public int getX()
     {
         return row;
     }
@@ -34,7 +34,7 @@ public class Monster
      * getCol   returns col value
      * @col     class's col variable
      */
-    public int getCol()
+    public int getY()
     {
         return col;
     }
