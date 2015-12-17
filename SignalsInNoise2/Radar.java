@@ -64,7 +64,7 @@ public class Radar
         monsterLocationCol = monsterLocCol;
         
         noiseFraction = 0.05;
-        numScans = 0;
+        numScans= 0;
     }
     
     public Radar(int rows, int cols, ArrayList<Location> monsterList)
@@ -80,7 +80,7 @@ public class Radar
         monList = monsterList;
         
         noiseFraction = 0.05;
-        numScans = 0;
+        numScans= 0;
     }
     
     /**
@@ -170,6 +170,11 @@ public class Radar
     public boolean isDetected(int row, int col)
     {
         return currentScan[row][col];
+    }
+    
+    public boolean[][] getGrid()
+    {
+        return currentScan;
     }
     
     /**
